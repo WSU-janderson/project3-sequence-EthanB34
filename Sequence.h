@@ -47,7 +47,8 @@ private:
       string item;
 
       SequenceNode() : next(nullptr), prev(nullptr), item("") {}
-      SequenceNode(const string& item) : next(nullptr), prev(nullptr), item(item) {}
+      SequenceNode(const string& item)
+      : next(nullptr), prev(nullptr), item(item) {}
   };
 
     SequenceNode* head_ptr;

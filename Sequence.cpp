@@ -1,12 +1,25 @@
 #include "Sequence.h"
+#include "Sequence.h"
 
 using namespace std;
 
 
 
 
-Sequence::Sequence(size_t size) {
-//TODO
+Sequence::Sequence(size_t sz)
+    : head_ptr(nullptr), tail_ptr(nullptr), numElts(0) {
+    for (size_t i = 0; i < sz; i++) {
+        SequenceNode* newNode = new SequenceNode(" ");
+        if (head_ptr == nullptr) {
+            head_ptr = newNode;
+            tail_ptr = newNode;
+        } else {
+            tail_ptr->next = newNode;
+            newNode->prev = tail_ptr;
+            tail_ptr = newNode;
+        }
+        numElts++;
+    }
 }
 
 Sequence::Sequence(const Sequence &s) {
