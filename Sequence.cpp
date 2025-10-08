@@ -35,7 +35,14 @@ Sequence& Sequence::operator=(const Sequence &s) {
 }
 
 string& Sequence::operator[](size_t position) {
-//TODO
+if (position > numElts) {
+    throw out_of_range("Position out of range");
+}
+    SequenceNode* current = head_ptr;
+    for (size_t i = 1; i < position   ; i++) {
+        current = current->next;
+    }
+    return current->item;
 }
 
 void Sequence::push_back(const string& item) {
