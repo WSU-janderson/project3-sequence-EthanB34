@@ -60,7 +60,20 @@ SequenceNode* newNode = new SequenceNode(item);
     }
 }
 void Sequence::pop_back() {
-//TODO
+if (numElts == 0) {
+    throw out_of_range("Empty sequence, cannot pop");
+} else if (numElts == 1) {
+    delete head_ptr;
+    head_ptr = nullptr;
+    tail_ptr = nullptr;
+    numElts = 0;
+} else {
+    SequenceNode* prevTail = tail_ptr;
+    tail_ptr = tail_ptr->prev;
+    tail_ptr->next = nullptr;
+    delete prevTail;
+    numElts--;
+}
 }
 void Sequence::insert(size_t position,const string& item) {
     if ( position > numElts ) {

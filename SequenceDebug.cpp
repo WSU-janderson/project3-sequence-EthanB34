@@ -16,15 +16,18 @@ int main() {
 
 //Sequence s;
 //Sequence s2(0);
-    Sequence s3(3);
+    Sequence s3(0);
 //s3.insert(3, "okay");
 //s3.insert(2, "yes");
-Sequence s2(0);
-s3.insert(0, "maybe");
-s3.insert(1, "no");
+Sequence s2(1);
+//s3.insert(0, "maybe");
+//s3.insert(1, "no");
+
     //s2.insert(0, "maybe");
     s2.push_back("no");
-    s2[2];
+    s2[1];
+    s2.pop_back();
+// exception thrown   s3.pop_back();
     cout << "DONE" << endl;
     return 0;
 }
