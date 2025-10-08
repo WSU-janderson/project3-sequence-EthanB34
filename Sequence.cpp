@@ -38,8 +38,19 @@ string& Sequence::operator[](size_t position) {
 //TODO
 }
 
-void Sequence::push_back(string item) {
-//TODO
+void Sequence::push_back(const string& item) {
+SequenceNode* newNode = new SequenceNode(item);
+    if (numElts == 0) {
+    head_ptr = newNode;
+    tail_ptr = newNode;
+        numElts++;
+    } else {
+        newNode->prev = tail_ptr;
+        newNode->next = nullptr;
+        tail_ptr->next = newNode;
+        tail_ptr = newNode;
+        numElts++;
+    }
 }
 void Sequence::pop_back() {
 //TODO

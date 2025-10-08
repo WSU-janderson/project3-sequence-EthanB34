@@ -24,7 +24,7 @@ Sequence& operator=(const Sequence& s);
 
 string& operator[](size_t position);
 
-void push_back(string item);
+void push_back(const string& item);
 
 void pop_back();
 

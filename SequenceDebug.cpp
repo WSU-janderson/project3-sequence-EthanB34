@@ -19,9 +19,11 @@ int main() {
     Sequence s3(3);
 //s3.insert(3, "okay");
 //s3.insert(2, "yes");
-
+Sequence s2(0);
 s3.insert(0, "maybe");
 s3.insert(1, "no");
+    //s2.insert(0, "maybe");
+    s2.push_back("no");
     cout << "DONE" << endl;
     return 0;
 }
