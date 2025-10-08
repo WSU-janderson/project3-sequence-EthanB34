@@ -1,5 +1,6 @@
 #include "Sequence.h"
 #include "Sequence.h"
+#include <stdexcept>
 
 using namespace std;
 
@@ -43,8 +44,47 @@ void Sequence::push_back(string item) {
 void Sequence::pop_back() {
 //TODO
 }
-void Sequence::insert(size_t position, string item) {
-//TODO
+void Sequence::insert(size_t position,const string& item) {
+    if ( position > numElts ) {
+        throw out_of_range("Position out of range");
+    }
+
+    SequenceNode* newNode = new SequenceNode(item);
+
+    if (numElts == 0) {
+        head_ptr = newNode;
+        tail_ptr = newNode;
+
+    } else if ( position == 0) {
+        newNode->next = head_ptr;
+        newNode->prev = nullptr;
+        head_ptr -> prev = newNode;
+        head_ptr = newNode;
+        numElts++;
+
+    } else if (position == numElts) {
+        newNode->next = tail_ptr;
+        newNode->prev = tail_ptr->prev;
+        if (tail_ptr->prev != nullptr) {
+            tail_ptr->prev->next = newNode;
+        } else {
+            head_ptr = newNode;
+        }
+        tail_ptr->prev = newNode;
+        numElts++;
+    } else {
+
+        SequenceNode* current = head_ptr;
+
+        for (size_t i = 0; i < position-1; i++) {
+            current = current->next;
+        }
+        newNode->next = current->next;
+        newNode->prev = current;
+        current->next = newNode;
+        current->prev = newNode;
+        numElts++;
+    }
 }
 void Sequence::erase(size_t position) {
 //TODO

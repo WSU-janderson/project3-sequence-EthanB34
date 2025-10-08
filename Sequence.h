@@ -28,7 +28,7 @@ void push_back(string item);
 
 void pop_back();
 
-void insert(size_t position, string item);
+void insert(size_t position, const string& item);
 
  string front() const;
  string back() const;
