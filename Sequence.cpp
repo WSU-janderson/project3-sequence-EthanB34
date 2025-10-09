@@ -89,7 +89,7 @@ if (position >= numElts ) {
     return current->item;
 }
 
-void Sequence::push_back(string item) {
+void Sequence::push_back(const string& item) {
 SequenceNode* newNode = new SequenceNode(item);
     if (numElts == 0) {
     head_ptr = newNode;
@@ -119,7 +119,7 @@ if (numElts == 0) {
     numElts--;
 }
 }
-void Sequence::insert(size_t position, string item) {
+void Sequence::insert(size_t position, const string& item) {
     if ( position > numElts ) {
         throw out_of_range("Position out of range");
     }
