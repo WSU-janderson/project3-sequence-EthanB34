@@ -27,7 +27,15 @@ Sequence::Sequence(const Sequence &s) {
 //TODO
 }
 Sequence::~Sequence() {
-//TODO
+    SequenceNode* current = head_ptr;
+    while (current != nullptr) {
+        SequenceNode* next = current->next;
+        delete current;
+        current = next;
+    }
+    head_ptr = nullptr;
+    tail_ptr = nullptr;
+    numElts = 0;
 }
 Sequence& Sequence::operator=(const Sequence &s) {
 //TODO
