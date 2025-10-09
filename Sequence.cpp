@@ -177,7 +177,7 @@ bool Sequence::empty() const {
     }
 }
 size_t Sequence::size() const {
-//TODO
+    return numElts;
 }
 
 
