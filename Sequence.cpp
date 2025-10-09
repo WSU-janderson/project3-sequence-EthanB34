@@ -1,7 +1,7 @@
 #include "Sequence.h"
 #include "Sequence.h"
 #include <stdexcept>
-
+#include <iostream>
 using namespace std;
 
 
@@ -137,7 +137,21 @@ size_t Sequence::size() const {
 //TODO
 }
 
+
+
 ostream& operator<<(ostream& os, const Sequence& s) {
-//TODO
+os << "<";
+Sequence::SequenceNode* current = s.head_ptr;
+    while (current != nullptr) {
+        os << current->item;
+        if (current->next != nullptr) {
+            os << ", ";
+            current = current->next;
+        }
+            os << current->item;
+            current = current->next;
+        }
+
+    os << ">";
     return os;
 }
