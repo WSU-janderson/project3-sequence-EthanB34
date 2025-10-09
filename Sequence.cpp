@@ -24,7 +24,26 @@ Sequence::Sequence(size_t sz)
 }
 
 Sequence::Sequence(const Sequence &s) {
-//TODO
+    head_ptr = nullptr;
+    tail_ptr = nullptr;
+    numElts = 0;
+    if (s.head_ptr != nullptr) {
+        head_ptr = new SequenceNode(s.head_ptr->item);
+        SequenceNode* currentNew = head_ptr;
+        SequenceNode* currentOld = s.head_ptr->next;
+        numElts= 1;
+
+        while (currentOld != nullptr) {
+            SequenceNode* newNode = new SequenceNode(currentOld->item);
+            currentNew->next = newNode;
+            newNode->prev = currentNew;
+            currentNew = newNode;
+            currentOld = currentOld->next;
+            numElts++;
+        }
+        tail_ptr = currentNew;
+    }
+
 }
 Sequence::~Sequence() {
     SequenceNode* current = head_ptr;
@@ -43,11 +62,11 @@ Sequence& Sequence::operator=(const Sequence &s) {
 }
 
 string& Sequence::operator[](size_t position) {
-if (position > numElts) {
+if (position >= numElts ) {
     throw out_of_range("Position out of range");
 }
     SequenceNode* current = head_ptr;
-    for (size_t i = 1; i < position   ; i++) {
+    for (size_t i = 0; i < position   ; i++) {
         current = current->next;
     }
     return current->item;
@@ -127,6 +146,9 @@ void Sequence::insert(size_t position,const string& item) {
 }
 void Sequence::erase(size_t position) {
 //TODO
+}
+void Sequence::erase(size_t position, size_t count) {
+    //TODO
 }
 void Sequence::clear() {
     SequenceNode* current = head_ptr;

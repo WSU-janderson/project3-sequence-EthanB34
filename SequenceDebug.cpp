@@ -19,10 +19,10 @@ int main() {
     Sequence s3(0);
 //s3.insert(3, "okay");
 //s3.insert(2, "yes");
-Sequence s2(1);
+Sequence s2(4);
 //s3.insert(0, "maybe");
 //s3.insert(1, "no");
-
+ s2[3] = "ok";
     //s2.insert(0, "maybe");
     s2.push_back("no");
     s3.push_back("yes");
@@ -34,7 +34,8 @@ Sequence s2(1);
     cout << s2 << endl;
   s2.clear();
     s2.push_back("yes");
+    Sequence s1 = s2;
     cout << s3 << endl;
-    
+
     return 0;
 }
