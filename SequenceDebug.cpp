@@ -26,8 +26,11 @@ Sequence s2(1);
     //s2.insert(0, "maybe");
     s2.push_back("no");
     s2[1];
-    s2.pop_back();
+//    s2.pop_back();
 // exception thrown   s3.pop_back();
     cout << "DONE" << endl;
+    cout << s2 << endl;
+    Sequence s4;
+    cout << s4 << endl;
     return 0;
 }
