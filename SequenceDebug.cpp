@@ -35,6 +35,9 @@ Sequence s2(4);
   s2.clear();
     s2.push_back("yes");
     Sequence s1 = s2;
+    s1.empty();
+    s1.clear();
+    s1.empty();
     cout << s3 << endl;
 
     return 0;

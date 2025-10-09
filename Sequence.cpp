@@ -169,7 +169,12 @@ string Sequence::back() const {
 //TODO
 }
 bool Sequence::empty() const {
-//TODO
+    SequenceNode* current = head_ptr;
+    if (current != nullptr) {
+        return false;
+    } else {
+        return true;
+    }
 }
 size_t Sequence::size() const {
 //TODO
