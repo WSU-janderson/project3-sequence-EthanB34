@@ -14,31 +14,18 @@ using namespace std;
 
 int main() {
 
-//Sequence s;
-//Sequence s2(0);
-    Sequence s3(0);
-//s3.insert(3, "okay");
-//s3.insert(2, "yes");
-Sequence s2(4);
-//s3.insert(0, "maybe");
-//s3.insert(1, "no");
- s2[3] = "ok";
-    //s2.insert(0, "maybe");
-    s2.push_back("no");
-    s3.push_back("yes");
-    s2[1];
-//    s2.pop_back();
-// exception thrown   s3.pop_back();
+Sequence s1;
+    s1.push_back("yes");
+    s1.push_back("maybe");
+    s1.push_back("no");
+    Sequence s2;
+    s2.push_back("hmmm");
+    s2 = s1;
+
+
 
     cout << "DONE" << endl;
-    cout << s2 << endl;
-  s2.clear();
-    s2.push_back("yes");
-    Sequence s1 = s2;
-    s1.empty();
-    s1.clear();
-    s1.empty();
-    cout << s3 << endl;
+
 
     return 0;
 }

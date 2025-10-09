@@ -57,7 +57,24 @@ Sequence::~Sequence() {
     numElts = 0;
 }
 Sequence& Sequence::operator=(const Sequence &s) {
-//TODO
+head_ptr = nullptr;
+tail_ptr = nullptr;
+    numElts = 0;
+    if (s.head_ptr != nullptr) {
+        head_ptr = new SequenceNode(s.head_ptr->item);
+        SequenceNode* currentNew = head_ptr;
+        SequenceNode* currentOld = s.head_ptr->next;
+        numElts = 1;
+        while (currentOld != nullptr) {
+            SequenceNode* newNode = new SequenceNode(currentOld->item);
+            currentNew->next = newNode;
+            newNode->prev = currentNew;
+            currentNew = newNode;
+            currentOld = currentOld->next;
+            numElts++;
+        }
+        tail_ptr = currentNew;
+    }
     return *this;
 }
 
@@ -163,10 +180,18 @@ void Sequence::clear() {
 }
 
 string Sequence::front() const {
-//TODO
+if (head_ptr == nullptr) {
+    throw out_of_range("Empty sequence, cannot get front");
+} else {
+    return head_ptr->item;
+}
 }
 string Sequence::back() const {
-//TODO
+if (head_ptr == nullptr) {
+    throw out_of_range("Empty sequence, cannot get back");
+} else {
+    return tail_ptr->item;
+}
 }
 bool Sequence::empty() const {
     SequenceNode* current = head_ptr;
