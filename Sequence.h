@@ -24,11 +24,11 @@ Sequence& operator=(const Sequence& s);
 
 string& operator[](size_t position);
 
-void push_back(const string& item);
+void push_back(string item);
 
 void pop_back();
 
-void insert(size_t position, const string& item);
+void insert(size_t position, string item);
 
  string front() const;
  string back() const;
