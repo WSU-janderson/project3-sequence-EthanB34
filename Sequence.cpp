@@ -194,7 +194,36 @@ if ( position > numElts -1 ) {
 
 }
 void Sequence::erase(size_t position, size_t count) {
-    //TODO
+    if ( position >= numElts  || count == 0 || position + count > numElts  ) {
+        throw out_of_range("Position out of range");
+    }
+    SequenceNode* firstDelete = head_ptr;
+    for (size_t i = 0; i < position; i++) {
+        firstDelete = firstDelete->next;
+    }
+    SequenceNode* lastDelete = firstDelete;
+    for (size_t i = 1; i < count; i++) {
+        lastDelete = lastDelete->next;
+    }
+    SequenceNode* beforeFirst = firstDelete->prev;
+    SequenceNode* afterLast = lastDelete->next;
+    if (beforeFirst != nullptr) {
+        beforeFirst->next = afterLast;
+    } else {
+        head_ptr = afterLast;
+    }
+    if ( afterLast != nullptr ) {
+        afterLast->prev = beforeFirst;
+    } else {
+        tail_ptr = beforeFirst;
+    }
+    SequenceNode* current = firstDelete;
+    while ( current != afterLast ) {
+        SequenceNode* next = current->next;
+        delete current;
+        current = next;
+        numElts--;
+    }
 }
 void Sequence::clear() {
     SequenceNode* current = head_ptr;
