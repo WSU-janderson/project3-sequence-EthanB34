@@ -162,7 +162,36 @@ void Sequence::insert(size_t position,const string& item) {
     }
 }
 void Sequence::erase(size_t position) {
-//TODO
+if ( position > numElts -1 ) {
+    throw out_of_range("Position out of range");
+}
+    SequenceNode* current = head_ptr;
+    for (size_t i = 0; i < position; i++) {
+        current = current->next;
+    }
+    if (current == head_ptr) {
+        head_ptr = current->next;
+        if ( head_ptr != nullptr ) {
+            head_ptr->prev = nullptr;
+        } else {
+            tail_ptr = nullptr;
+        }
+
+    } else if ( current == tail_ptr ) {
+        tail_ptr = current->prev;
+        if ( tail_ptr != nullptr ) {
+            tail_ptr->next = nullptr;
+        }  else {
+                head_ptr = nullptr;
+            }
+
+        } else {
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
+    }
+    delete current;
+    numElts--;
+
 }
 void Sequence::erase(size_t position, size_t count) {
     //TODO

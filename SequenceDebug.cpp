@@ -21,7 +21,7 @@ Sequence s1;
     Sequence s2;
     s2.push_back("hmmm");
     s2 = s1;
-
+s2.erase(0);
 
 
     cout << "DONE" << endl;
