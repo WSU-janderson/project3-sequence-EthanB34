@@ -129,7 +129,15 @@ void Sequence::erase(size_t position) {
 //TODO
 }
 void Sequence::clear() {
-//TODO
+    SequenceNode* current = head_ptr;
+    while (current != nullptr) {
+        SequenceNode* next = current->next;
+        delete current;
+        current = next;
+    }
+    head_ptr = nullptr;
+    tail_ptr = nullptr;
+    numElts = 0;
 }
 
 string Sequence::front() const {
@@ -150,14 +158,15 @@ size_t Sequence::size() const {
 ostream& operator<<(ostream& os, const Sequence& s) {
 os << "<";
 Sequence::SequenceNode* current = s.head_ptr;
+
     while (current != nullptr) {
         os << current->item;
         if (current->next != nullptr) {
             os << ", ";
-            current = current->next;
+
         }
-            os << current->item;
-            current = current->next;
+        current = current->next;
+
         }
 
     os << ">";
