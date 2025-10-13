@@ -237,7 +237,7 @@ if (numElts == 0) {
  */
 void Sequence::insert(size_t position, const string& item) {
 
-    if ( position > numElts ) {
+    if ( position >= numElts ) {
         throw out_of_range("Position out of range");
     }
 
